@@ -37,7 +37,7 @@ public class ClientHandler implements Runnable{
             }
         }
     }
-    public void broadCastMessage(String messageToSend){
+    public synchronized void broadCastMessage(String messageToSend){
         for(ClientHandler clientHandler : clientHandlers){
             try{
                 if(!clientHandler.socket.equals(socket)){

@@ -37,7 +37,7 @@ public class Client {
             closeEverything(socket,bufferedReader, bufferedWriter);
         }
     }
-    public void listenForMessage(){
+    public synchronized void listenForMessage(){
         new Thread(new Runnable() {
             @Override
             public void run() {

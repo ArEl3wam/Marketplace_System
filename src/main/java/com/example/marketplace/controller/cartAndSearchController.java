@@ -79,7 +79,7 @@ public class cartAndSearchController {
         updateView(false);
     }
 
-    public void updateView(boolean isSearch) {
+    public synchronized void updateView(boolean isSearch) {
         // clearing the windows
         searchVBox.getChildren().clear();
         cartVBox.getChildren().clear();
