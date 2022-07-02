@@ -1,12 +1,11 @@
 package com.example.marketplace.controller;
 
-import com.example.marketplace.App;
+import com.example.marketplace.ClientApp;
 import com.example.marketplace.dao.CustomerDao;
 import com.example.marketplace.dao.CustomerDaoJdbc;
 import com.example.marketplace.dao.Jdbc;
 import com.example.marketplace.model.Customer;
 
-import com.example.marketplace.ServerLogic.Server;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
@@ -25,11 +24,6 @@ public class LoginController {
 
     @FXML
     protected void onSignInButtonClick() {
-
-        if (email.getText().equals("Admin") && password.getText().equals("Admin")) {
-            App.startAdminView();
-            return;
-        }
         if (email.getText().isEmpty() || password.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Please type your email and password");
@@ -48,23 +42,17 @@ public class LoginController {
             return;
         }
 
-        App.mainCustomer = customer;
-        App.startCustomerView();
+        ClientApp.mainCustomer = customer;
+        ClientApp.startCustomerView();
     }
 
     @FXML
     protected void onSignUpButtonClick() {
-        App.startSignUpView();
+        ClientApp.startSignUpView();
     }
 
     @FXML
     protected void onSetDBIp() {
         Jdbc.setIP(ipTF.getText());
     }
-
-    @FXML
-    protected void onStartSocket() {
-        Server.startNow();
-    }
-
 }
